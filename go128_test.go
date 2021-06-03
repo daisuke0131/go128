@@ -6,6 +6,10 @@ import (
 	"testing"
 )
 
+func init() {
+	go128.Analyzer.Flags.Set("num", "3")
+}
+
 func TestFromFileSystem(t *testing.T) {
 	testdata := analysistest.TestData()
 	analysistest.Run(t, testdata, go128.Analyzer, "a")

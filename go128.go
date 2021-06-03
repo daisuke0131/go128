@@ -5,7 +5,14 @@ import (
 	"golang.org/x/tools/go/analysis"
 )
 
+var num int
+
+func init() {
+	Analyzer.Flags.IntVar(&num, "num", 5,"Number of parameters")
+}
+
 const doc = "go128 is try"
+
 
 var Analyzer = &analysis.Analyzer{
 	Name:             "go128",
@@ -21,8 +28,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			if !ok{
 				continue
 			}
-			if len(fdecl.Type.Params.List) >= 5{
-				pass.Reportf(fdecl.Pos(),"%sは引数が5個以上あります！!\n", fdecl.Name.Name)
+			if len(fdecl.Type.Params.List) >= num{
+				pass.Reportf(fdecl.Pos(),"%sは引数が%d個以上あります！!\n", fdecl.Name.Name,num)
 			}
 		}
 	}
