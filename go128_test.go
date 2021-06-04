@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	go128.Analyzer.Flags.Set("num", "3")
+	go128.Analyzer.Flags.Set("num", "5")
 }
 
 func TestFromFileSystem(t *testing.T) {
